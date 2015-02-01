@@ -35,6 +35,7 @@ Then it will call a specially-named function at the interval you chose:
 	
 	}
 
+There's lots more information in the [ATMega328p datasheet](http://www.atmel.com/images/Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf).
 ## Caveats
 
 * Any global variables used in the ISR(WDT_vect) function (really an Interrupt Service Routine) need to be declared volatile:
