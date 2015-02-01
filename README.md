@@ -44,13 +44,15 @@ Then it will call a specially-named function at the interval you chose:
 
 * The ISR(WDT_vect) routine may hang with some standard Arduino functions. In particular, anything involving delay() seems to kill it. 
 
-		You can always set a flag (my_variable=true) and take care of the delay-containing work in your loop function.
+		You can always set a flag (my_variable=true) and take care of the delay-containing 
+		work in your loop function.
 
 * I've read that the watchdog timer is not terribly precise. 
 
 * You can't go shorter than 15ms or longer than 8 seconds, although you can always keep a variable and accumulate up to the interval you want. 
 
-		Example: if you want a 45-second watchdog timer, set it to WDTO_1S and increment a variable until it reaches 45... then do the actual work. 
+		Example: if you want a 45-second watchdog timer, set it to WDTO_1S and increment 
+		a variable until it reaches 45... then do the actual work. 
 
 * You'll still need to take care of the sleep/wake stuff.
 
