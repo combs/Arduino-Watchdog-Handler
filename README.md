@@ -20,8 +20,13 @@ The watchdog timer keeps running during many sleep modes on the Arduino. You can
 Install the library, then:
 
 	#include "Watchdog.h"
+	#include <avr/wdt.h>
 
-In your setup routine, call:
+In your setup routine, add this as the very first line:
+
+	wdt_disable();
+
+Then when you're ready for a periodic function to start running, call:
 
 	setup_watchdog(WDTO_1S);
 
@@ -48,6 +53,8 @@ There's lots more information in the [ATMega328p datasheet](http://www.atmel.com
 		You can always set a flag (my_variable=true) and take care of the delay-containing 
 		work in your loop function.
 
+* If you reset the Arduino, under some conditions, the watchdog timer may remain active after reset and misbehave. This is why it's best to call wdt_disable() as the first line of your setup() routine. 
+
 * I've read that the watchdog timer is not terribly precise. 
 
 * You can't go shorter than 15ms or longer than 8 seconds, although you can always keep a variable and accumulate up to the interval you want. 
@@ -55,7 +62,7 @@ There's lots more information in the [ATMega328p datasheet](http://www.atmel.com
 		Example: if you want a 45-second watchdog timer, set it to WDTO_1S and increment 
 		a variable until it reaches 45... then do the actual work. 
 
-* You'll still need to take care of the sleep/wake stuff.
+* You'll still need to take care of any sleep/wake stuff.
 
 
 
