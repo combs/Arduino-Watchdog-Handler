@@ -1,5 +1,5 @@
 
-#include "watchdog.h"
+#include "watchdogHandler.h"
 #include <avr/power.h>
 #include <avr/wdt.h>
 #include <avr/sleep.h>
