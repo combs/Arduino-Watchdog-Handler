@@ -19,7 +19,7 @@ The watchdog timer keeps running during many sleep modes on the Arduino. You can
 
 Install the library, then:
 
-	#include "Watchdog.h"
+	#include "watchdogHandler.h"
 	#include <avr/wdt.h>
 
 In your setup routine, add this as the very first line:
